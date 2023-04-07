@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.FreeGames.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/dark_mode</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/icon_dark_mode</item>
+        <item name="postSplashScreenTheme">@style/Theme.FreeGames</item>
+    </style>
+</resources>
