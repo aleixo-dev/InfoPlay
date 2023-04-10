@@ -12,7 +12,7 @@
 🔍 With this application, you can find free games to download for diferent platforms, see details about each game and go to the official page to see more.
 </p>
 
-<a href="https://play.google.com/store/apps/details?id=br.com.nicolas.consultacd">
+<a href="https://play.google.com/store/apps/details?id=com.nicolas.freegames">
 <img  width="20%" src="https://play.google.com/intl/en_us/badges/static/images/badges/pt_badge_web_generic.png"/>
 <img  width="90%" src="https://user-images.githubusercontent.com/75820713/230973639-01a50d36-be26-4d69-9350-52451d7ef833.png"/>
 
