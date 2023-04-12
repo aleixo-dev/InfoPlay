@@ -22,11 +22,9 @@
 
   - Jetpack Compose
   - ViewModel
-  - ViewBinding
   - Flow
   - DataStore
   - Navigation Component
-  
   
 - Architecture
   - MVVM (View - ViewModel - Model)
