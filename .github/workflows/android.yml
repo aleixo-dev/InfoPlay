@@ -20,7 +20,7 @@ jobs:
         DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
       run: echo $DATA > /home/runner/work/InfoPlay/InfoPlay/app/google-services.json
     - name: Unignore Admob file
-      run: echo $(git update-index --no-assume-unchanged admob_id.xml)
+      run: echo $(git update-index --no-assume-unchanged app/src/main/res/values/admob_id.xml)
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with gradle
