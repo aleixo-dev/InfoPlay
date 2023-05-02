@@ -22,7 +22,7 @@ jobs:
     - name: Write Admob file
       env:
         DATA: ${{ secrets.ADMOB_KEY }}
-      run: echo $DATA > app/src/main/res/values/admob_id.xml
+      run: echo $DATA > /home/runner/work/InfoPlay/InfoPlay/app/src/main/res/values/admob_id.xml
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with gradle
