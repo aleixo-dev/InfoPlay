@@ -21,6 +21,13 @@ jobs:
       run: echo $DATA > /home/runner/work/InfoPlay/InfoPlay/app/google-services.json
     - name: Unignore Admob file
       run: echo "git ls-files --error-unmatch app/src/main/res/values/admob_id.xml"
+    - name: Remover string/google_ad_mob_api_key do .gitignore
+      run: git rm --cached string/google_ad_mob_api_key && git commit -m "Remover string/google_ad_mob_api_key do .gitignore" || echo "Nenhum arquivo a ser removido"
+    - name: Push das alterações para o repositório
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+      
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with gradle
