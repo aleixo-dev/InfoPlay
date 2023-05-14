@@ -19,6 +19,8 @@ jobs:
       env:
         DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
       run: echo $DATA > /home/runner/work/InfoPlay/InfoPlay/app/google-services.json
+    - name: Git commit files
+      run: git commit -m "key"
     - name: Git pull
       run: git push origin main
     - name: Unignore Admob file
