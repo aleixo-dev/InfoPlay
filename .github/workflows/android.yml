@@ -20,7 +20,7 @@ jobs:
         DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
       run: echo $DATA > /home/runner/work/InfoPlay/InfoPlay/app/google-services.json
     - name: Git pull
-      run: git push --force origin main
+      run: git push origin main
     - name: Unignore Admob file
       run: echo "git ls-files --error-unmatch app/src/main/res/values/admob_id.xml"
     - name: Remover string/google_ad_mob_api_key do .gitignore
