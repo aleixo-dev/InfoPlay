@@ -20,9 +20,9 @@ jobs:
         DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
       run: echo $DATA > /home/runner/work/InfoPlay/InfoPlay/app/google-services.json
     - name: Git pull
-      run: git push origin main
+      run: git pull
     - name: Unignore Admob file
-      run: echo "git ls-files --error-unmatch app/src/main/res/values/admob_id.xml"
+      run: git ls-files --error-unmatch app/src/main/res/values/admob_id.xml
     - name: Remover string/google_ad_mob_api_key do .gitignore
       run: git rm --cached string/google_ad_mob_api_key && git commit -m "Remover string/google_ad_mob_api_key do .gitignore" || echo "Nenhum arquivo a ser removido"
     - name: Config github
