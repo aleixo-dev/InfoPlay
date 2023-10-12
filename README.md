@@ -20,11 +20,11 @@
 
 - Language : [Kotlin](https://kotlinlang.org/)
 
-  - Jetpack Compose
-  - ViewModel
-  - Flow
-  - DataStore
-  - Navigation Component
+  - Jetpack Compose.
+  - ViewModel.
+  - Flow.
+  - DataStore.
+  - Navigation Component.
   
 - Architecture
   - MVVM (View - ViewModel - Model)
