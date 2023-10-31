@@ -31,13 +31,11 @@ import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.nicolas.freegames.models.domain.DetailGame
-import com.nicolas.freegames.models.domain.SystemRequirements
 import com.nicolas.freegames.navigation.Screen
 import com.nicolas.freegames.ui.theme.QuartzColor
 import com.nicolas.freegames.utils.AdView
 import com.nicolas.freegames.utils.ErrorModal
 import com.nicolas.freegames.utils.OpenExternalLink
-import com.nicolas.freegames.utils.ShareGame
 
 @Composable
 fun DetailScreen(
@@ -264,7 +262,7 @@ fun ActionTop(modifier: Modifier = Modifier, onBackScreen: () -> Unit, onInfo: (
             Icon(
                 imageVector = Icons.Default.ArrowBack,
                 contentDescription = "icon_arrow_back",
-                tint = Color.White
+                tint = White
             )
         }
         Box(
@@ -276,7 +274,7 @@ fun ActionTop(modifier: Modifier = Modifier, onBackScreen: () -> Unit, onInfo: (
             Icon(
                 imageVector = Icons.Default.Info,
                 contentDescription = "icon_info_back",
-                tint = Color.White, modifier = Modifier.clickable { onInfo.invoke() }
+                tint = White, modifier = Modifier.clickable { onInfo.invoke() }
             )
         }
     }
