@@ -116,8 +116,6 @@ fun CardContainerSelector(
 ) {
 
     var selectedItem by remember { mutableStateOf<Category?>(null) }
-    println("aleixo: recomposition $selectedItem")
-    var cardColor by remember { mutableStateOf(QuartzColor) }
 
     LazyRow {
         items(categories) { category ->
