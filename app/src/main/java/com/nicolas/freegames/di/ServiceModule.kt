@@ -1,5 +1,7 @@
 package com.nicolas.freegames.di
 
+import android.content.Context
+import com.nicolas.freegames.data.local.ModelGameDao
 import com.nicolas.freegames.data.repository.FreeGameRepository
 import com.nicolas.freegames.data.repository.FreeGameRepositoryImpl
 import com.nicolas.freegames.data.service.FreeGameService
@@ -7,6 +9,7 @@ import com.nicolas.freegames.utils.Consts
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -36,8 +39,14 @@ object ServiceModule {
 
     @Provides
     fun provideRepository(
-        freeGameService: FreeGameService
-    ) : FreeGameRepository {
-        return FreeGameRepositoryImpl(freeGameService)
+        freeGameService: FreeGameService,
+        modelGameDao: ModelGameDao,
+        @ApplicationContext context: Context
+    ): FreeGameRepository {
+        return FreeGameRepositoryImpl(
+            freeGameService = freeGameService,
+            database = modelGameDao,
+            context = context
+        )
     }
 }
