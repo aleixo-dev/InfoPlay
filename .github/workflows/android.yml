@@ -13,7 +13,7 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
         cache: gradle
-    - name: Load Gooel Service File
+    - name: Load Google Service File
       env:
         DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
       run: echo $DATA | base64 -di > app/google-services.json
