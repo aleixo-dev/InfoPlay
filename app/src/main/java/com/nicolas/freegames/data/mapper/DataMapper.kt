@@ -1,5 +1,6 @@
 package com.nicolas.freegames.data.mapper
 
+import com.nicolas.freegames.data.local.ModelGameEntity
 import com.nicolas.freegames.models.domain.DetailGame
 import com.nicolas.freegames.models.domain.ModelGame
 import com.nicolas.freegames.models.domain.ScreenshotsGame
@@ -46,5 +47,28 @@ fun GameDetailResponse.toGameDetail() =
         ),
         screenshotsGame = screenshots.map { it.toScreenshotGame() }
     )
+
+
+fun ModelGame.toEntity() = ModelGameEntity(
+    id = id?.toInt() ?: 0,
+    title = title,
+    genre = genre,
+    description = description,
+    platform = platform,
+    thumbnail = thumbnail?.replace("\"", " "),
+    publisher = publisher,
+    developer = developer
+)
+
+fun ModelGameEntity.toDomain() = ModelGame(
+    id = id.toString(),
+    title = title,
+    genre = genre,
+    description = description,
+    platform = platform,
+    thumbnail = thumbnail,
+    publisher = publisher,
+    developer = developer
+)
 
 
