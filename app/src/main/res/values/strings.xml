@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">FreeGames</string>
     <string name="category_name">CATEGORIAS</string>
-    <string name="google_ad_mob_api_key">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="manifest_admob_id">ca-app-pub-4660007070424946~1049530588</string>
+    <string name="admob_key_id">ca-app-pub-3940256099942544/9214589741
+
+</string>
 
 </resources>
