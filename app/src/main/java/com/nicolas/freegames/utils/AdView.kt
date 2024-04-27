@@ -23,7 +23,7 @@ fun AdView(modifier : Modifier = Modifier) {
                         currentWidth
                     )
                 )
-                adUnitId = context.getString(R.string.admob_key_ad)
+                adUnitId = context.getString(R.string.admob_key_id)
                 loadAd(AdRequest.Builder().build())
             }
         }
