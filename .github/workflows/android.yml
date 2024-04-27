@@ -13,12 +13,10 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
         cache: gradle
-    - name: Create file
-      run: cat /home/runner/work/InfoPlay/app/google-services.json | base64
-    - name: Putting data
+    - name: Load Gooel Service File
       env:
         DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
-      run: echo $DATA > /home/runner/work/InfoPlay/app/google-services.json
+      run: echo $DATA | base64 -di > app/google-services.json
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
