@@ -45,7 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.nicolas.freegames.R
-import com.nicolas.freegames.ui.home.components.CardGame
+import com.nicolas.freegames.ui.components.CardGame
 import com.nicolas.freegames.ui.theme.BackgroundApplication
 import com.nicolas.freegames.ui.theme.BlackGray
 import com.nicolas.freegames.ui.theme.CrayolaColor

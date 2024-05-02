@@ -1,4 +1,4 @@
-package com.nicolas.freegames.models.domain
+package com.nicolas.freegames.model
 
 data class SystemRequirements(
     val os: String? = null,

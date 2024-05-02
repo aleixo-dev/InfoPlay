@@ -3,7 +3,7 @@ package com.nicolas.freegames.di
 import android.content.Context
 import androidx.room.Room
 import com.nicolas.freegames.data.local.AppDatabase
-import com.nicolas.freegames.data.local.ModelGameDao
+import com.nicolas.freegames.data.local.dao.ModelGameDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,9 +26,9 @@ class DatabaseModule {
         ).build()
     }
 
-        @Provides
-        @Singleton
-        fun provideUserDao(appDatabase: AppDatabase): ModelGameDao {
-            return appDatabase.modelGameDao()
-        }
+    @Provides
+    @Singleton
+    fun provideUserDao(appDatabase: AppDatabase): ModelGameDao {
+        return appDatabase.modelGameDao()
+    }
 }

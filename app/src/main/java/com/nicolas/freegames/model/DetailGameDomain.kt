@@ -1,6 +1,6 @@
-package com.nicolas.freegames.models.domain
+package com.nicolas.freegames.model
 
-data class DetailGame(
+data class DetailGameDomain(
     val title: String? = null,
     val status: String? = null,
     val shortDescription: String? = null,

@@ -1,9 +1,9 @@
-package com.nicolas.freegames.models.remote
+package com.nicolas.freegames.data.network.models
 
 
 import com.google.gson.annotations.SerializedName
 
-data class GameDetailResponse(
+data class NetworkGameDetail(
     @SerializedName("description")
     val description: String,
     @SerializedName("developer")

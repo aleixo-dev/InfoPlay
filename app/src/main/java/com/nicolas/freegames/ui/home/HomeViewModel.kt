@@ -3,7 +3,7 @@ package com.nicolas.freegames.ui.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nicolas.freegames.data.repository.FreeGameRepository
-import com.nicolas.freegames.models.domain.ModelGame
+import com.nicolas.freegames.model.GameDomain
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -52,7 +52,7 @@ class HomeViewModel @Inject constructor(
 
     private fun setStateGameUi(
         isLoading: Boolean = false,
-        data: List<ModelGame> = listOf(),
+        data: List<GameDomain> = listOf(),
         hasError: Boolean = false,
         loaded: Boolean = false
     ) {

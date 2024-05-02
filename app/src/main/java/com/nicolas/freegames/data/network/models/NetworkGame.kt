@@ -1,10 +1,10 @@
-package com.nicolas.freegames.models.remote
+package com.nicolas.freegames.data.network.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class GameResponseItem(
+data class NetworkGame(
     @SerialName("developer")
     val developer: String,
     @SerialName("freetogame_profile_url")

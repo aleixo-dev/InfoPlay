@@ -1,4 +1,4 @@
-package com.nicolas.freegames.ui.home.components
+package com.nicolas.freegames.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -23,17 +23,17 @@ import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
-import com.nicolas.freegames.models.domain.ModelGame
-import com.nicolas.freegames.navigation.Screen
+import com.nicolas.freegames.model.GameDomain
+import com.nicolas.freegames.ui.navigation.Route
 
 @Composable
-fun CardGame(game: ModelGame, navController: NavController) {
+fun CardGame(game: GameDomain, navController: NavController) {
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly,
         modifier = Modifier.clickable {
-            navController.navigate(route = "${Screen.DETAILS.name}/${game.id}")
+            navController.navigate(route = "${Route.DETAILS.name}/${game.id}")
         }
     ) {
 

@@ -1,11 +1,11 @@
-package com.nicolas.freegames.data.local
+package com.nicolas.freegames.data.local.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class ModelGameEntity(
+data class GameEntity(
     @PrimaryKey(autoGenerate = true) var id: Int,
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "genre") val genre: String?,
@@ -13,5 +13,5 @@ data class ModelGameEntity(
     @ColumnInfo(name = "platform") val platform: String?,
     @ColumnInfo(name = "thumbnail") val thumbnail: String?,
     @ColumnInfo(name = "publisher") val publisher: String?,
-    @ColumnInfo(name = "developer") val developer: String?,
+    @ColumnInfo(name = "developer") val developer: String?
 )

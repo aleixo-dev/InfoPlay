@@ -1,6 +1,6 @@
-package com.nicolas.freegames.models.domain
+package com.nicolas.freegames.model
 
-data class ModelGame(
+data class GameDomain(
     var id: String? = null,
     var title: String? = null,
     var genre: String? = null,

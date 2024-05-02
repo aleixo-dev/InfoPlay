@@ -1,18 +1,31 @@
 package com.nicolas.freegames.data.mapper
 
-import com.nicolas.freegames.data.local.ModelGameEntity
-import com.nicolas.freegames.models.domain.DetailGame
-import com.nicolas.freegames.models.domain.ModelGame
-import com.nicolas.freegames.models.domain.ScreenshotsGame
-import com.nicolas.freegames.models.domain.SystemRequirements
-import com.nicolas.freegames.models.remote.GameResponse
-import com.nicolas.freegames.models.remote.GameResponseItem
-import com.nicolas.freegames.models.remote.GameDetailResponse
-import com.nicolas.freegames.models.remote.MinimumSystemRequirements
-import com.nicolas.freegames.models.remote.Screenshot
+import com.nicolas.freegames.data.local.entities.GameEntity
+import com.nicolas.freegames.model.DetailGameDomain
+import com.nicolas.freegames.model.GameDomain
+import com.nicolas.freegames.model.ScreenshotsGame
+import com.nicolas.freegames.model.SystemRequirements
+import com.nicolas.freegames.data.network.models.NetworkGame
+import com.nicolas.freegames.data.network.models.NetworkGameDetail
+import com.nicolas.freegames.data.network.models.Screenshot
 
-fun GameResponseItem.toDataItem() =
-    ModelGame(
+/** from api to database entity */
+
+fun NetworkGame.asEntity() = GameEntity(
+    id = id ?: 0,
+    title = title,
+    genre = genre,
+    description = shortDescription,
+    platform = platform,
+    thumbnail = thumbnail.replace("\"", " "),
+    publisher = publisher,
+    developer = developer
+)
+
+/** from api to game domain */
+
+fun NetworkGame.toGameDomain() =
+    GameDomain(
         id = id.toString(),
         title = title,
         genre = genre,
@@ -23,12 +36,25 @@ fun GameResponseItem.toDataItem() =
         developer = developer
     )
 
-fun GameResponse.toData() = map { it.toDataItem() }
+/** from database entity to game domain */
+
+fun GameEntity.asExternalModel() = GameDomain(
+    id = id.toString(),
+    title = title,
+    genre = genre,
+    description = description,
+    platform = platform,
+    thumbnail = thumbnail,
+    publisher = publisher,
+    developer = developer
+)
 
 fun Screenshot.toScreenshotGame() = ScreenshotsGame(id = id.toString(), image = image)
 
-fun GameDetailResponse.toGameDetail() =
-    DetailGame(
+/** from api to game detail domain */
+
+fun NetworkGameDetail.toGameDetailDomain() =
+    DetailGameDomain(
         title = title,
         status = status,
         shortDescription = shortDescription,
@@ -47,28 +73,4 @@ fun GameDetailResponse.toGameDetail() =
         ),
         screenshotsGame = screenshots.map { it.toScreenshotGame() }
     )
-
-
-fun ModelGame.toEntity() = ModelGameEntity(
-    id = id?.toInt() ?: 0,
-    title = title,
-    genre = genre,
-    description = description,
-    platform = platform,
-    thumbnail = thumbnail?.replace("\"", " "),
-    publisher = publisher,
-    developer = developer
-)
-
-fun ModelGameEntity.toDomain() = ModelGame(
-    id = id.toString(),
-    title = title,
-    genre = genre,
-    description = description,
-    platform = platform,
-    thumbnail = thumbnail,
-    publisher = publisher,
-    developer = developer
-)
-
 
