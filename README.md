@@ -14,17 +14,23 @@
 
 <a href="https://play.google.com/store/apps/details?id=com.nicolas.freegames">
 <img  width="20%" src="https://play.google.com/intl/en_us/badges/static/images/badges/pt_badge_web_generic.png"/>
-<img  width="90%" src="https://user-images.githubusercontent.com/75820713/230973639-01a50d36-be26-4d69-9350-52451d7ef833.png"/>
+<img  width="80%" src="https://github.com/aleixo-dev/InfoPlay/assets/75820713/d146270d-27df-4cce-a148-8255dbc9e954"/>
 
-## 📌 Technologies Used.
+## 📌 Technologies Used
 
 - Language : [Kotlin](https://kotlinlang.org/)
-
-  - Jetpack Compose.
-  - ViewModel.
-  - Flow.
-  - DataStore.
-  - Navigation Component.
+- Jetpack Compose.
+- ViewModel.
+- Flow.
+- Room.
+- Navigation.
+- DataStore.
+- Retrofit.
+- SplashScreen.
+- OkHttp.
+- Dagger-Hilt.
+- Coil.
+- Navigation Component.
   
 - Architecture
   - MVVM (View - ViewModel - Model)
