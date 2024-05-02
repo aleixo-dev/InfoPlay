@@ -1,7 +1,6 @@
 package com.nicolas.freegames.di
 
-import android.content.Context
-import com.nicolas.freegames.data.local.ModelGameDao
+import com.nicolas.freegames.data.datasource.remote.GameRemoteDataSource
 import com.nicolas.freegames.data.repository.FreeGameRepository
 import com.nicolas.freegames.data.repository.FreeGameRepositoryImpl
 import com.nicolas.freegames.data.service.FreeGameService
@@ -9,12 +8,12 @@ import com.nicolas.freegames.utils.Consts
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -39,14 +38,8 @@ object ServiceModule {
 
     @Provides
     fun provideRepository(
-        freeGameService: FreeGameService,
-        modelGameDao: ModelGameDao,
-        @ApplicationContext context: Context
+        gameRemoteDataSource: GameRemoteDataSource
     ): FreeGameRepository {
-        return FreeGameRepositoryImpl(
-            freeGameService = freeGameService,
-            database = modelGameDao,
-            context = context
-        )
+        return FreeGameRepositoryImpl(gameRemoteDataSource)
     }
 }
