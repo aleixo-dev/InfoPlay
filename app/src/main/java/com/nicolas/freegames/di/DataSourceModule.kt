@@ -1,8 +1,11 @@
 package com.nicolas.freegames.di
 
-import com.nicolas.freegames.data.datasource.remote.GameRemoteDataSource
-import com.nicolas.freegames.data.datasource.remote.GameRemoteDataSourceImpl
-import com.nicolas.freegames.data.service.FreeGameService
+import com.nicolas.freegames.data.local.datasource.GameLocalDataSource
+import com.nicolas.freegames.data.local.datasource.GameLocalDataSourceImpl
+import com.nicolas.freegames.data.network.datasource.GameRemoteDataSource
+import com.nicolas.freegames.data.network.datasource.GameRemoteDataSourceImpl
+import com.nicolas.freegames.data.local.dao.ModelGameDao
+import com.nicolas.freegames.data.network.FreeGameService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,8 +16,13 @@ import dagger.hilt.components.SingletonComponent
 object DataSourceModule {
 
     @Provides
-    fun provideGameDataSource(service: FreeGameService): GameRemoteDataSource {
+    fun provideGameRemoteDataSource(service: FreeGameService): GameRemoteDataSource {
         return GameRemoteDataSourceImpl(service)
+    }
+
+    @Provides
+    fun provideGameLocalDataSource(dao : ModelGameDao) : GameLocalDataSource {
+        return GameLocalDataSourceImpl(dao)
     }
 
 }
