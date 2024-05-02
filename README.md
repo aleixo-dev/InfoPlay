@@ -13,7 +13,7 @@
 </p>
 
 <a href="https://play.google.com/store/apps/details?id=com.nicolas.freegames">
-<img  width="20%" src="https://play.google.com/intl/en_us/badges/static/images/badges/pt_badge_web_generic.png"/>
+<img  width="20%" src="https://play.google.com/intl/en_us/badges/static/images/badges/pt_badge_web_generic.png"/> <a/>
 <img  width="80%" src="https://github.com/aleixo-dev/InfoPlay/assets/75820713/d146270d-27df-4cce-a148-8255dbc9e954"/>
 
 ## 📌 Technologies Used
@@ -31,16 +31,16 @@
 - Dagger-Hilt.
 - Coil.
 - Navigation Component.
-  
-- Architecture
-  - MVVM (View - ViewModel - Model)
-  
-- Firebase
+
+## 📃 Architecture
+  - MVVM (View - ViewModel - Model)  
+
+## 🔥 Firebase
   - Analytics 
   - Crashlytics
   - Admob
 
-- Lib
+## 📖 Lib
   - [Retrofit2](https://github.com/square/retrofit):
   - [Dagger-Hilt](https://developer.android.com/training/dependency-injection/dagger-android):
   - [SplashScreen](https://developer.android.com/develop/ui/views/launch/splash-screen)
