@@ -22,9 +22,6 @@ class HomeViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(GameStateUi())
     val uiState: StateFlow<GameStateUi> = _uiState.asStateFlow()
 
-    private var _localData = MutableStateFlow<List<ModelGame>>(arrayListOf())
-    val localData: StateFlow<List<ModelGame>> = _localData.asStateFlow()
-
     fun onEvent(event: GameUiEvent) {
         when (event) {
             GameUiEvent.FetchAllGames -> {
@@ -47,28 +44,10 @@ class HomeViewModel @Inject constructor(
     private fun getAllGames() = viewModelScope.launch {
         repository.getAllGames()
             .onStart { setStateGameUi(isLoading = true) }
-            .catch { getAllLocal() }
+            .catch {  }
             .collect { data ->
-                data.onEach(::saveLocal)
                 setStateGameUi(data = data, loaded = true)
             }
-    }
-
-    private fun saveLocal(modelGame: ModelGame) = viewModelScope.launch {
-        try {
-            repository.setInsertDate()
-            repository.saveLocalModelGame(modelGame)
-        } catch (exception: Exception) {
-            println(exception)
-        }
-    }
-
-    private fun getAllLocal() {
-        viewModelScope.launch {
-            repository.getAllModelGameLocal().collect {
-                setStateGameUi(data = it, loaded = true)
-            }
-        }
     }
 
     private fun setStateGameUi(
@@ -85,9 +64,5 @@ class HomeViewModel @Inject constructor(
                 loaded = loaded
             )
         }
-    }
-
-    companion object {
-        const val CACHE_TIME = "cache_time"
     }
 }
