@@ -9,9 +9,9 @@ import androidx.room.Query
 interface ModelGameDao {
 
     @Query("SELECT * FROM modelgameentity")
-    fun getAll(): List<ModelGameEntity>
+    suspend fun getData(): List<ModelGameEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllData(modelGame: ModelGameEntity)
+    suspend fun insert(modelGame: ModelGameEntity)
 
 }
