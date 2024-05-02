@@ -1,6 +1,6 @@
-package com.nicolas.freegames.navigation
+package com.nicolas.freegames.ui.navigation
 
-enum class Screen(route: String) {
+enum class Route(route: String) {
     ONBOARDING(route = "onBoarding"),
     HOME(route = "home"),
     DETAILS(route = "details"),

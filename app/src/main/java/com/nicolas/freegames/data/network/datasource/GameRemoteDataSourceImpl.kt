@@ -1,6 +1,6 @@
-package com.nicolas.freegames.data.datasource.remote
+package com.nicolas.freegames.data.network.datasource
 
-import com.nicolas.freegames.data.service.FreeGameService
+import com.nicolas.freegames.data.network.FreeGameService
 
 class GameRemoteDataSourceImpl(
     private val service: FreeGameService
