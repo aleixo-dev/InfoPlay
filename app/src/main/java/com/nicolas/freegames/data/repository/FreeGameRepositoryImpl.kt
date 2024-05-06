@@ -1,10 +1,9 @@
 package com.nicolas.freegames.data.repository
 
-import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
 import com.nicolas.freegames.data.local.datasource.GameLocalDataSource
+import com.nicolas.freegames.data.local.datastore.CacheTimeDataStore
+import com.nicolas.freegames.data.mapper.asEntity
+import com.nicolas.freegames.data.mapper.asExternalModel
 import com.nicolas.freegames.data.mapper.toGameDetailDomain
 import com.nicolas.freegames.data.mapper.toGameDomain
 import com.nicolas.freegames.data.network.datasource.GameRemoteDataSource
@@ -15,20 +14,39 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class FreeGameRepositoryImpl @Inject constructor(
     private val remote: GameRemoteDataSource,
     private val local: GameLocalDataSource,
-    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default
+    private val dataStore: CacheTimeDataStore,
+    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : FreeGameRepository {
 
     override suspend fun getAllGames(): Flow<List<GameDomain>> = flow {
 
-        val response = remote.getAllGames()
-        emit(response.map { it.toGameDomain() }.sortedBy { it.publisher })
+        val currentTime = System.currentTimeMillis()
+        val lastUpdate = dataStore.getLastUpdateTime().getOrNull() ?: 0L
+
+        if (currentTime - lastUpdate >= TimeUnit.MINUTES.toMillis(10)) {
+
+            val apiResponse = remote.getAllGames()
+            local.create(apiResponse.map { networkGame -> networkGame.asEntity() })
+
+            emit(apiResponse.map { network -> network.toGameDomain() }.sortedBy { gameDomain ->
+                gameDomain.publisher
+            })
+
+            dataStore.saveLastUpdateTime(currentTime)
+
+        } else {
+
+            val localData = local.getAll()
+            emit(localData.map { entity ->
+                entity.asExternalModel()
+            })
+        }
 
     }.flowOn(defaultDispatcher)
 
