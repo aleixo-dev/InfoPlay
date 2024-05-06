@@ -1,6 +1,7 @@
 package com.nicolas.freegames.di
 
 import com.nicolas.freegames.data.local.datasource.GameLocalDataSource
+import com.nicolas.freegames.data.local.datastore.CacheTimeDataStore
 import com.nicolas.freegames.data.network.datasource.GameRemoteDataSource
 import com.nicolas.freegames.data.repository.FreeGameRepository
 import com.nicolas.freegames.data.repository.FreeGameRepositoryImpl
@@ -39,8 +40,9 @@ object ServiceModule {
     @Provides
     fun provideRepository(
         gameRemoteDataSource: GameRemoteDataSource,
-        gameLocalDataSource: GameLocalDataSource
+        gameLocalDataSource: GameLocalDataSource,
+        cacheTimeDataStore: CacheTimeDataStore
     ): FreeGameRepository {
-        return FreeGameRepositoryImpl(gameRemoteDataSource, gameLocalDataSource)
+        return FreeGameRepositoryImpl(gameRemoteDataSource, gameLocalDataSource,cacheTimeDataStore)
     }
 }

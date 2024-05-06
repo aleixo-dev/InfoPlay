@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class GameEntity(
-    @PrimaryKey(autoGenerate = true) var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Int = 0,
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "genre") val genre: String?,
     @ColumnInfo(name = "description") val description: String?,

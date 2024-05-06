@@ -12,7 +12,6 @@ import com.nicolas.freegames.data.network.models.Screenshot
 /** from api to database entity */
 
 fun NetworkGame.asEntity() = GameEntity(
-    id = id ?: 0,
     title = title,
     genre = genre,
     description = shortDescription,
