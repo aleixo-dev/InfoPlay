@@ -3,7 +3,7 @@ package com.nicolas.freegames.ui.details
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nicolas.freegames.data.repository.FreeGameRepository
-import com.nicolas.freegames.models.domain.DetailGame
+import com.nicolas.freegames.model.DetailGameDomain
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -32,7 +32,7 @@ class DetailViewModel @Inject constructor(
 
     private fun setStateGameUi(
         isLoading: Boolean = false,
-        data: DetailGame? = DetailGame(),
+        data: DetailGameDomain? = DetailGameDomain(),
         isError: Boolean = false
     ) {
         _uiState.update { currentState ->

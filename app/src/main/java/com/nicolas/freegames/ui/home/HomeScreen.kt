@@ -2,7 +2,15 @@ package com.nicolas.freegames.ui.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -11,10 +19,20 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,12 +45,16 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.nicolas.freegames.R
-import com.nicolas.freegames.ui.home.components.CardGame
+import com.nicolas.freegames.ui.components.CardGame
 import com.nicolas.freegames.ui.theme.BackgroundApplication
 import com.nicolas.freegames.ui.theme.BlackGray
 import com.nicolas.freegames.ui.theme.CrayolaColor
 import com.nicolas.freegames.ui.theme.QuartzColor
-import com.nicolas.freegames.utils.*
+import com.nicolas.freegames.utils.AdView
+import com.nicolas.freegames.utils.Category
+import com.nicolas.freegames.utils.ErrorModal
+import com.nicolas.freegames.utils.MockData
+import com.nicolas.freegames.utils.ShareGame
 
 @Composable
 fun HomeScreen(
@@ -40,7 +62,7 @@ fun HomeScreen(
     homeViewModel: HomeViewModel = hiltViewModel(),
 ) {
     val uiState by homeViewModel.uiState.collectAsState()
-    LaunchedEffect(key1 = Unit) { homeViewModel.onEvent(event = GameUiEvent.FetchAllGames) }
+    LaunchedEffect(Unit) { homeViewModel.onEvent(event = GameUiEvent.FetchAllGames) }
 
     Scaffold(bottomBar = { AdView() }) {
         Column(
@@ -116,10 +138,12 @@ fun CardContainerSelector(
 ) {
 
     var selectedItem by remember { mutableStateOf<Category?>(null) }
-    println("aleixo: recomposition $selectedItem")
-    var cardColor by remember { mutableStateOf(QuartzColor) }
 
-    LazyRow {
+    LazyRow(
+        modifier = Modifier.fillMaxWidth(),
+        contentPadding = PaddingValues(horizontal = 10.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
         items(categories) { category ->
             CardCategories(category = category,
                 setCardSelector = selectedItem?.let {
@@ -151,11 +175,10 @@ fun CardCategories(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
-            .size(width = 110.dp, height = 145.dp)
     ) {
         Box(
             modifier = Modifier
-                .size(90.dp)
+                .size(70.dp)
                 .background(
                     color = background,
                     shape = RoundedCornerShape(10.dp)
@@ -170,7 +193,7 @@ fun CardCategories(
                 painter = painterResource(id = category.gameCategory.icon),
                 contentDescription = "icon_category",
                 tint = Color.White,
-                modifier = Modifier.size(45.dp)
+                modifier = Modifier.size(40.dp)
             )
         }
         Text(
@@ -180,7 +203,8 @@ fun CardCategories(
             fontWeight = FontWeight.Bold,
             color = Color.Black,
             style = MaterialTheme.typography.caption,
-            modifier = Modifier.padding(top = 10.dp)
+            modifier = Modifier.padding(5.dp),
+            fontSize = MaterialTheme.typography.caption.fontSize,
         )
     }
 }

@@ -11,7 +11,7 @@ import com.google.android.gms.ads.AdView
 import com.nicolas.freegames.R
 
 @Composable
-fun AdView(modifier : Modifier = Modifier) {
+fun AdView(modifier: Modifier = Modifier) {
     val currentWidth = LocalConfiguration.current.screenWidthDp
     AndroidView(
         modifier = modifier.fillMaxWidth(),
