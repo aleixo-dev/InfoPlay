@@ -9,6 +9,11 @@
 ## Download 📦
 You can download the info play app directly from the play store. [**here**](https://play.google.com/store/apps/details?id=com.nicolas.freegames)
 
+## Screens
+OnBoarding                 | Home | Details
+:-------------------------:|:-------------------------:|:-------------------------:
+<img src="https://github.com/aleixo-dev/InfoPlay/assets/75820713/de1722a8-82b5-4cbb-8bf7-a744431f514f" /> | <img src="https://github.com/aleixo-dev/InfoPlay/assets/75820713/ab642abf-626e-4bfc-b446-5d92517cadd5" /> | <img src="https://github.com/aleixo-dev/InfoPlay/assets/75820713/d9c0bb08-eacf-4fa9-9cd2-9d705af968a6" />
+
 ## Technologies 📌
 
 - Language : [Kotlin](https://kotlinlang.org/)
