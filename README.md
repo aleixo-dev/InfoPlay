@@ -1,22 +1,15 @@
-<h1 align="center"> 🎮INFOPLAY - FIND YOUR STYLE🎮 </h1>
+# InfoPlay 🎮
 
-<p align="center">
-  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
-  <a href="https://android-arsenal.com/api?level=34"><img alt="API" src="https://img.shields.io/badge/API-34%2B-brightgreen.svg?style=flat"/></a>
-  <br>
-  <a href="https://www.linkedin.com/in/nicolas-aleixo/"><img alt="Linkedin" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
-  <a href="mailto:nicolasaleixo2020@gmail.com"><img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
-</p>
+<a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
+<a href="https://android-arsenal.com/api?level=34"><img alt="API" src="https://img.shields.io/badge/API-34%2B-brightgreen.svg?style=flat"/></a>
 
-<p align="center">  
+## Description 📃
 🔍 With this application, you can find free games to download for diferent platforms, see details about each game and go to the official page to see more.
-</p>
 
-<a href="https://play.google.com/store/apps/details?id=com.nicolas.freegames">
-<img  width="20%" src="https://play.google.com/intl/en_us/badges/static/images/badges/pt_badge_web_generic.png"/> <a/>
-<img  width="80%" src="https://github.com/aleixo-dev/InfoPlay/assets/75820713/d146270d-27df-4cce-a148-8255dbc9e954"/>
+## Download 📦
+You can download the info play app directly from the play store. [**here**](https://play.google.com/store/apps/details?id=com.nicolas.freegames)
 
-## 📌 Technologies Used
+## Technologies 📌
 
 - Language : [Kotlin](https://kotlinlang.org/)
 - Jetpack Compose.
@@ -32,15 +25,15 @@
 - Coil.
 - Navigation Component.
 
-## 📃 Architecture
+## Architecture 📃
   - MVVM (View - ViewModel - Model)  
 
-## 🔥 Firebase
+## Firebase 🔥
   - Analytics 
   - Crashlytics
   - Admob
 
-## 📖 Lib
+## Lib 📖
   - [Retrofit2](https://github.com/square/retrofit):
   - [Dagger-Hilt](https://developer.android.com/training/dependency-injection/dagger-android):
   - [SplashScreen](https://developer.android.com/develop/ui/views/launch/splash-screen)
