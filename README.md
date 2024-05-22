@@ -7,7 +7,7 @@
 🔍 With this application, you can find free games to download for diferent platforms, see details about each game and go to the official page to see more.
 
 ## Download 📦
-You can download the info play app directly from the play store. [**here**](https://play.google.com/store/apps/details?id=com.nicolas.freegames)
+You can download the info play app directly from the play store. [**here**](https://play.google.com/store/apps/details?id=com.nicolas.freegames).
 
 ## Screens
 OnBoarding                 | Home | Details
