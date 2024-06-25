@@ -1,8 +1,11 @@
 package com.nicolas.freegames.di
 
+import com.nicolas.freegames.data.local.datasource.GameLocalDataSource
+import com.nicolas.freegames.data.local.datastore.CacheTimeDataStore
+import com.nicolas.freegames.data.network.datasource.GameRemoteDataSource
 import com.nicolas.freegames.data.repository.FreeGameRepository
 import com.nicolas.freegames.data.repository.FreeGameRepositoryImpl
-import com.nicolas.freegames.data.service.FreeGameService
+import com.nicolas.freegames.data.network.FreeGameService
 import com.nicolas.freegames.utils.Consts
 import dagger.Module
 import dagger.Provides
@@ -36,8 +39,10 @@ object ServiceModule {
 
     @Provides
     fun provideRepository(
-        freeGameService: FreeGameService
-    ) : FreeGameRepository {
-        return FreeGameRepositoryImpl(freeGameService)
+        gameRemoteDataSource: GameRemoteDataSource,
+        gameLocalDataSource: GameLocalDataSource,
+        cacheTimeDataStore: CacheTimeDataStore
+    ): FreeGameRepository {
+        return FreeGameRepositoryImpl(gameRemoteDataSource, gameLocalDataSource,cacheTimeDataStore)
     }
 }
