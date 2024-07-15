@@ -30,14 +30,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
-import com.nicolas.freegames.models.domain.DetailGame
-import com.nicolas.freegames.models.domain.SystemRequirements
-import com.nicolas.freegames.navigation.Screen
+import com.nicolas.freegames.model.DetailGameDomain
+import com.nicolas.freegames.ui.navigation.Route
 import com.nicolas.freegames.ui.theme.QuartzColor
 import com.nicolas.freegames.utils.AdView
 import com.nicolas.freegames.utils.ErrorModal
 import com.nicolas.freegames.utils.OpenExternalLink
-import com.nicolas.freegames.utils.ShareGame
 
 @Composable
 fun DetailScreen(
@@ -55,7 +53,7 @@ fun DetailScreen(
         ActionTop(
             onBackScreen = {
                 navController.popBackStack(
-                    Screen.HOME.name,
+                    Route.HOME.name,
                     inclusive = false,
                     saveState = false
                 )
@@ -86,7 +84,7 @@ fun DetailScreen(
 
 
 @Composable
-fun MovieSection(state: DetailGame) {
+fun MovieSection(state: DetailGameDomain) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
@@ -123,7 +121,7 @@ fun MovieSection(state: DetailGame) {
             )
             Spacer(modifier = Modifier.size(10.dp))
         }
-        ScreenshotsSlider(detailGame = state)
+        ScreenshotsSlider(detailGameDomain = state)
         Spacer(modifier = Modifier.size(10.dp))
         Text(
             text = state.shortDescription ?: "",
@@ -144,13 +142,13 @@ fun MovieSection(state: DetailGame) {
         )
         Spacer(modifier = Modifier.size(10.dp))
         AdView(modifier = Modifier.fillMaxWidth())
-        SystemRequirementsGame(gameDetailGame = state)
+        SystemRequirementsGame(gameDetailGameDomain = state)
     }
 }
 
 @Composable
-fun SystemRequirementsGame(gameDetailGame: DetailGame) {
-    AnimatedVisibility(visible = gameDetailGame.systemRequirements?.os != null) {
+fun SystemRequirementsGame(gameDetailGameDomain: DetailGameDomain) {
+    AnimatedVisibility(visible = gameDetailGameDomain.systemRequirements?.os != null) {
         Column(modifier = Modifier.fillMaxWidth()) {
             Spacer(modifier = Modifier.size(5.dp))
             Text(
@@ -167,31 +165,31 @@ fun SystemRequirementsGame(gameDetailGame: DetailGame) {
                     .padding(10.dp)
             ) {
                 Text(
-                    text = gameDetailGame.systemRequirements?.os ?: "",
+                    text = gameDetailGameDomain.systemRequirements?.os ?: "",
                     fontWeight = FontWeight.Normal,
                     style = MaterialTheme.typography.body2, color = White
                 )
                 Spacer(modifier = Modifier.size(2.dp))
                 Text(
-                    text = gameDetailGame.systemRequirements?.processor ?: "",
+                    text = gameDetailGameDomain.systemRequirements?.processor ?: "",
                     fontWeight = FontWeight.Normal,
                     style = MaterialTheme.typography.body2, color = White
                 )
                 Spacer(modifier = Modifier.size(2.dp))
                 Text(
-                    text = gameDetailGame.systemRequirements?.memory ?: "",
+                    text = gameDetailGameDomain.systemRequirements?.memory ?: "",
                     fontWeight = FontWeight.Normal,
                     style = MaterialTheme.typography.body2, color = White
                 )
                 Spacer(modifier = Modifier.size(2.dp))
                 Text(
-                    text = gameDetailGame.systemRequirements?.graphics ?: "",
+                    text = gameDetailGameDomain.systemRequirements?.graphics ?: "",
                     fontWeight = FontWeight.Normal,
                     style = MaterialTheme.typography.body2, color = White
                 )
                 Spacer(modifier = Modifier.size(2.dp))
                 Text(
-                    text = gameDetailGame.systemRequirements?.storage ?: "",
+                    text = gameDetailGameDomain.systemRequirements?.storage ?: "",
                     fontWeight = FontWeight.Normal,
                     style = MaterialTheme.typography.body2, color = White
                 )
@@ -202,17 +200,17 @@ fun SystemRequirementsGame(gameDetailGame: DetailGame) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ScreenshotsSlider(detailGame: DetailGame) {
+fun ScreenshotsSlider(detailGameDomain: DetailGameDomain) {
     val pagerState = rememberPagerState()
 
-    detailGame.screenshotsGame?.size?.let {
+    detailGameDomain.screenshotsGame?.size?.let {
         HorizontalPager(
             pageCount = it,
             state = pagerState, contentPadding = PaddingValues(horizontal = 10.dp)
         ) { images ->
             SubcomposeAsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(detailGame.screenshotsGame[images].image)
+                    .data(detailGameDomain.screenshotsGame[images].image)
                     .crossfade(true)
                     .build(),
                 loading = { CircularProgressIndicator(color = QuartzColor) },
@@ -264,7 +262,7 @@ fun ActionTop(modifier: Modifier = Modifier, onBackScreen: () -> Unit, onInfo: (
             Icon(
                 imageVector = Icons.Default.ArrowBack,
                 contentDescription = "icon_arrow_back",
-                tint = Color.White
+                tint = White
             )
         }
         Box(
@@ -276,7 +274,7 @@ fun ActionTop(modifier: Modifier = Modifier, onBackScreen: () -> Unit, onInfo: (
             Icon(
                 imageVector = Icons.Default.Info,
                 contentDescription = "icon_info_back",
-                tint = Color.White, modifier = Modifier.clickable { onInfo.invoke() }
+                tint = White, modifier = Modifier.clickable { onInfo.invoke() }
             )
         }
     }

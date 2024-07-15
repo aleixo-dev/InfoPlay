@@ -3,7 +3,16 @@ package com.nicolas.freegames.ui.onboarding
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -13,20 +22,13 @@ import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.datastore.core.DataStore
 import com.nicolas.freegames.ui.theme.QuartzColor
-import com.nicolas.freegames.utils.UserStore
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.util.prefs.Preferences
 
 @Composable
 fun OnBoarding(onClickButton: () -> Unit) {
@@ -39,27 +41,28 @@ fun OnBoarding(onClickButton: () -> Unit) {
     ) {
         Spacer(modifier = Modifier.size(10.dp))
         Text(
-            text = "Oooooooooooooooolá",
+            text = "Ooooooolá🥳",
             fontWeight = FontWeight.Bold,
-            style = MaterialTheme.typography.h5, color = Color.DarkGray
+            style = MaterialTheme.typography.h4, color = Color.DarkGray
         )
         Spacer(modifier = Modifier.size(10.dp))
         Text(
-            text = "bem vindo ao free games!",
+            text = "Feliz em ter você conosco\nInfo Play encontre seu estilo de jogo",
             fontWeight = FontWeight.Normal,
-            style = MaterialTheme.typography.body2,
-            color = Color.Gray
+            style = MaterialTheme.typography.subtitle1,
+            color = Color.Gray,
+            textAlign = TextAlign.Center
         )
         Spacer(modifier = Modifier.weight(1f))
         Image(
             painter = painterResource(id = com.nicolas.freegames.R.drawable.onboarding_image),
             contentDescription = "", alignment = Alignment.Center
         )
-        Spacer(modifier = Modifier.size(40.dp))
+        Spacer(modifier = Modifier.size(100.dp))
         Text(
-            text = "um applicativo onde você pode ver os\nmelhores jogos gratis!",
+            text = "Aqui você encontra os melhores jogos gratuitos do mundo bem na palma da sua mão totalmente gratuito!",
             fontWeight = FontWeight.Normal,
-            style = MaterialTheme.typography.body2,
+            style = MaterialTheme.typography.subtitle1,
             color = Color.Gray, textAlign = TextAlign.Center
         )
         Spacer(modifier = Modifier.weight(1f))
@@ -81,5 +84,13 @@ fun OnBoarding(onClickButton: () -> Unit) {
                 )
             }
         }
+    }
+}
+
+@Preview
+@Composable
+private fun OnBoardingPreview() {
+    OnBoarding {
+
     }
 }

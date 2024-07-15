@@ -2,7 +2,7 @@
 <resources>
     <style name="Theme.FreeGames.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/icon_light_mode</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/new_icon_app</item>
         <item name="postSplashScreenTheme">@style/Theme.FreeGames</item>
     </style>
 </resources>

@@ -1,9 +1,9 @@
 package com.nicolas.freegames.ui.details
 
-import com.nicolas.freegames.models.domain.DetailGame
+import com.nicolas.freegames.model.DetailGameDomain
 
 data class DetailGameState(
     val isLoading : Boolean = false,
     val isError : Boolean = false,
-    val data : DetailGame? = DetailGame()
+    val data : DetailGameDomain? = DetailGameDomain()
 )
